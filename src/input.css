@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .shadowbox:hover {
-  box-shadow: 0px 0px 10px 8px rgba(126, 34, 206, 0.9);
+  box-shadow: 0px 0px 10px 8px rgba(234, 179, 8, 0.9);
 }
 
 .parallax-forest {
@@ -15,4 +21,50 @@
   width: 100%;
   top: 0;
   left: 0;
+}
+
+.show-opacity {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.show-translate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.add-modal-window.active {
+  transform: scale(1);
+  transform: translateY(0);
+  z-index: 40;
+  position: fixed;
+}
+
+.hidden {
+  display: none;
 }

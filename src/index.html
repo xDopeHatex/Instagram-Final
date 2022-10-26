@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../dist/output.css" rel="stylesheet" />
+
     <script src="../src/script.js" defer></script>
   </head>
-  <body class="bg-black">
-    <div class="bg-black navlink">
+  <body class="bg-black overflow-x-hidden">
+    <div class="bg-black navlink z-10">
       <!-- Wrapper of Nav Bar-->
 
       <div class="mx-auto w-5/6">
@@ -22,7 +23,7 @@
             <li class="text-white">Contact</li>
             <li>
               <button
-                class="shadowbox px-5 py-2 bg-white rounded-xl active:translate-y-0.5 hover:scale-110 transition-all duration-300"
+                class="add-post-button shadowbox px-5 py-2 bg-white rounded-xl active:translate-y-0.5 hover:scale-110 transition-all duration-300"
               >
                 Add post
               </button>
@@ -32,17 +33,27 @@
       </div>
     </div>
 
-    <!-- Forest Parallax -->
+    <!-- Beach Parallax -->
     <section
-      class="bg-[url('../img/bgImg1.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-end items-center mb-[10rem]"
+      class="bg-[url('../img/bgImg1.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-end items-center"
     >
       <!-- Some Text -->
       <div
         class="flex flex-col justify-center items-center w-2/5 py-12 space-y-6"
       >
-        <h4 class="text-white text-3xl">Social Network & More</h4>
-        <h1 class="text-white text-5xl font-extrabold">Aperture</h1>
-        <h5 class="text-white text-center font-thin text-sm">
+        <h4
+          class="text-white text-3xl opacity-0 transition-all translate-y-[7rem] duration-700 opacity-text"
+        >
+          Social Network & More
+        </h4>
+        <h1
+          class="text-white text-5xl font-extrabold opacity-0 transition-all translate-y-[7rem] duration-[1s] opacity-text"
+        >
+          Aperture
+        </h1>
+        <h5
+          class="text-white text-center font-thin text-sm opacity-0 transition-all translate-y-[7rem] duration-[1.5s] opacity-text"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           varius enim in eros elementum tristique. Duis cursus, mi quis viverra
           ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
@@ -51,31 +62,103 @@
         </h5>
       </div>
     </section>
+    <!-- Add App Modal Pop Up -->
+
+    <form
+      id="add-form"
+      class="add-modal-window scale-0 flex-col p-6 space-y-5 rounded-lg z-50 top-[10rem] left-0 right-0 transition-all duration-500 w-3/5 m-auto border-2 border-white ease-in-out hidden"
+    >
+      <div class="flex justify-between items-center">
+        <p class="text-2xl text-white px-3 bg-amber-500">Add post</p>
+        <button type="button" class="h-9 w-9 group add-button-close">
+          <img
+            class="bg-white p-2 rounded-full active:translate-y-0.5 group-hover:shadow-lg group-hover:shadow-slate-700 transition-all duration-300 group-hover:scale-110"
+            src="../img/cross.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div>
+        <textarea
+          maxlength="150"
+          name="title"
+          placeholder="Here goes title of your post..."
+          class="add-title-content bg-black rounded-lg py-4 px-3 w-full border-2 border-white text-white"
+        ></textarea>
+        <div
+          class="add-title-characters border-2 border-amber-500 py-3 rounded-lg bg-white max-w-[33%] px-2 justify-center items-center hidden text-white"
+        ></div>
+      </div>
+
+      <div>
+        <textarea
+          maxlength="250"
+          name="body"
+          placeholder="Here goes your post..."
+          class="add-post-content bg-black text-white border-2 border-white rounded-lg py-4 px-3 w-full min-h-[10rem]"
+        ></textarea>
+        <div
+          class="add-post-characters border-2 border-amber-500 py-3 rounded-lg bg-white justify-center max-w-[33%] px-2 items-center hidden"
+        ></div>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <label
+          for="inputImgAdd"
+          class="cursor-pointer bg-white px-[3rem] py-[0.7rem] text-black rounded-lg shadowbox hover:scale-110 transition-all duration-200 active:translate-y-0.5 flex"
+          >Add Image
+          <input
+            id="inputImgAdd"
+            name="image"
+            type="file"
+            class="hidden"
+            accept="image/png"
+          />
+        </label>
+        <button
+          type="submit"
+          class="add-upload-post bg-white px-[3.9rem] py-[0.63rem] text-black rounded-lg shadowbox transition-all hover:scale-110 duration-200 active:translate-y-0.5"
+        >
+          Add Post
+        </button>
+      </div>
+    </form>
+
+    <!-- Overlay -->
+    <div class="overlay hidden"></div>
     <!-- Wrapper of Nav Bar-->
-    <section class="mx-auto w-5/6 mb-[10rem]">
-      <div class="flex flex-col items-center space-y-5 mb-[10rem]">
+    <section class="mx-auto w-5/6 my-[10rem]">
+      <div
+        class="flex flex-col items-center space-y-5 mb-[10rem] opacity-text opacity-0 transition-all duration-500"
+      >
         <h3 class="text-5xl font-semibold text-white">What we do.</h3>
         <h5 class="text-xl text-white">The areas that we're specialized in.</h5>
       </div>
       <!-- GRID -->
-      <div class="grid grid-cols-2 gap-4 h-screen">
-        <div class="bg-[url('../img/img1.png')] bg-cover h-full"></div>
-        <div class="bg-[url('../img/img2.png')] bg-cover h-full"></div>
-        <div class="bg-[url('../img/img3.png')] bg-cover h-full"></div>
-        <div class="bg-[url('../img/img4.png')] bg-cover h-full"></div>
-      </div>
+      <ul class="grid grid-cols-2 gap-4 h-[150vh]">
+        <li class="bg-[url('../img/img1.png')] bg-cover h-full"></li>
+        <li class="bg-[url('../img/img2.png')] bg-cover h-full"></li>
+        <li class="bg-[url('../img/img3.png')] bg-cover h-full"></li>
+        <li class="bg-[url('../img/img4.png')] bg-cover h-full"></li>
+      </ul>
     </section>
     <!-- Mountain Parallax -->
     <section
-      class="bg-[url('../img/fuji.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-center items-end mb-[10rem]"
+      class="bg-[url('../img/fuji.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-center items-end"
     >
       <!-- Some Text -->
       <div
         class="flex flex-col justify-center items-center w-2/5 py-12 space-y-6"
       >
-        <h4 class="text-white text-3xl uppercase">Sunset at mount fuji</h4>
+        <h4
+          class="text-white text-3xl uppercase translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1s]"
+        >
+          Sunset at mount fuji
+        </h4>
 
-        <h5 class="text-white text-center font-thin text-sm">
+        <h5
+          class="text-white text-center font-thin text-sm translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1.5s]"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           varius enim in eros elementum tristique. Duis cursus, mi quis viverra
           ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
@@ -85,11 +168,21 @@
       </div>
     </section>
     <!-- Section with photocamera -->
-    <section class="flex h-[50vh] mx-auto w-5/6">
+    <section class="flex h-[50vh] mx-auto w-5/6 my-[10rem]">
       <div class="w-[50%] flex flex-col justify-center items-start pr-[10rem]">
-        <h6 class="text-white text-xl font-light">The Gear cage</h6>
-        <h3 class="text-white text-4xl font-bold">The tools that we use.</h3>
-        <p class="text-white font-extralight text-sm">
+        <h6
+          class="text-white text-xl font-light translate-text-from-left opacity-0 transition-all -translate-x-[15rem] duration-[1.5s]"
+        >
+          The Gear cage
+        </h6>
+        <h3
+          class="text-white text-4xl font-bold translate-text-from-left opacity-0 transition-all -translate-x-[15rem] duration-[1s]"
+        >
+          The tools that we use.
+        </h3>
+        <p
+          class="text-white font-extralight text-sm translate-text-from-left opacity-0 transition-all -translate-x-[15rem] duration-[1.5s]"
+        >
           The say that "no place is boring if you've had a good night's sleep
           and have a pocket full of unexposed film". While we don't shoot (a
           lot) of film these days — these are the tools that we actually use
@@ -102,18 +195,83 @@
     </section>
     <!-- Plants Parallax -->
     <section
-      class="bg-[url('../img/plants.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-center items-end mb-[10rem]"
+      class="bg-[url('../img/plants.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-center items-end"
     >
       <!-- Some Text -->
       <div
         class="flex flex-col justify-start items-start w-2/5 py-12 space-y-6"
       >
-        <h4 class="text-white text-3xl uppercase">Monstera Leafs</h4>
+        <h4
+          class="text-white text-3xl uppercase translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1s]"
+        >
+          Monstera Leafs
+        </h4>
 
-        <h5 class="text-white font-thin text-sm">
+        <h5
+          class="text-white font-thin text-sm translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1.5s]"
+        >
           Vestibulum sit amet urna turpis. Mauris euismod elit et nisi ultrices,
           ut faucibus orci tincidunt.
         </h5>
+      </div>
+    </section>
+    <!-- Past CLients Wrapper -->
+    <section
+      class="mx-auto w-5/6 h-[33vh] flex flex-col space-y-5 justify-center items-center my-[10rem]"
+    >
+      <!-- Past Clients -->
+      <div
+        class="flex flex-col space-y-3 justify-center items-center opacity-text opacity-0 transition-all duration-500"
+      >
+        <h3 class="text-white text-4xl font-bold">Past clients</h3>
+        <p class="text-white font-extralight text-sm">
+          Trusted by your favorite companies
+        </p>
+      </div>
+      <div
+        class="flex justify-evenly items-center w-full opacity-text opacity-0 transition-all duration-500"
+      >
+        <img src="../img/partner1.svg" alt="" />
+        <img src="../img/partner2.svg" alt="" />
+        <img src="../img/partner3.svg" alt="" />
+        <img src="../img/partner4.svg" alt="" />
+        <img src="../img/partner5.svg" alt="" />
+      </div>
+    </section>
+    <!-- Mountains Parallax -->
+    <section
+      class="bg-[url('../img/mountains.png')] bg-cover h-screen bg-fixed bg-center flex flex-col justify-center items-end"
+    >
+      <!-- Some Text -->
+      <div
+        class="flex flex-col justify-start items-start w-2/5 py-12 space-y-6"
+      >
+        <h4
+          class="text-white text-3xl uppercase translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1s]"
+        >
+          Star fall in the Himalayas
+        </h4>
+
+        <h5
+          class="text-white font-thin text-sm translate-text-from-right opacity-0 transition-all translate-x-[15rem] duration-[1.5s]"
+        >
+          Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex,
+          condimentum dapibus congue et, vulputate ut ligula.
+        </h5>
+      </div>
+    </section>
+    <!-- Past CLients Wrapper -->
+    <section
+      class="mx-auto w-5/6 h-[33vh] flex flex-col space-y-5 justify-center items-center"
+    >
+      <!-- Need Help? -->
+      <div
+        class="flex flex-col space-y-3 justify-center items-center opacity-text opacity-0 transition-all duration-500"
+      >
+        <h3 class="text-white text-4xl font-bold">
+          Need help with photography or videography?
+        </h3>
+        <p class="text-white font-extralight text-sm">We're here for you!</p>
       </div>
     </section>
   </body>
