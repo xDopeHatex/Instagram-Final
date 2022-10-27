@@ -78,22 +78,11 @@
           />
         </button>
       </div>
-      <div>
-        <textarea
-          maxlength="150"
-          name="title"
-          placeholder="Here goes title of your post..."
-          class="add-title-content bg-black rounded-lg py-4 px-3 w-full border-2 border-white text-white"
-        ></textarea>
-        <div
-          class="add-title-characters border-2 border-amber-500 py-3 rounded-lg bg-white max-w-[33%] px-2 justify-center items-center hidden text-white"
-        ></div>
-      </div>
 
       <div>
         <textarea
           maxlength="250"
-          name="body"
+          name="text"
           placeholder="Here goes your post..."
           class="add-post-content bg-black text-white border-2 border-white rounded-lg py-4 px-3 w-full min-h-[10rem]"
         ></textarea>
@@ -112,7 +101,7 @@
             name="image"
             type="file"
             class="hidden"
-            accept="image/png"
+            accept="image/*"
           />
         </label>
         <button
@@ -123,11 +112,38 @@
         </button>
       </div>
     </form>
+    <!-- Delete Modal Window -->
+    <div
+      data-id=""
+      id="delete-form"
+      class="delete-modal-window top-[30%] border-2 border-white flex-col p-6 space-y-5 rounded-lg z-50 transition-all fixed duration-300 w-3/5 left-0 right-0 m-auto scale-0 hidden"
+    >
+      <div class="flex justify-between items-center">
+        <p class="text-2xl text-white px-3 bg-rose-800">Delete post</p>
+        <button type="button" class="h-9 w-9 group delete-button-close">
+          <img
+            class="bg-white p-2 rounded-full active:translate-y-0.5 group-hover:shadow-lg group-hover:shadow-slate-700 transition-all duration-300 group-hover:scale-110"
+            src="../img/cross.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="text-white">Do you really want to delete post?</div>
+      <div class="flex justify-between items-center">
+        <div></div>
+        <button
+          type="click"
+          class="delete-post-btn bg-white px-[4.5rem] py-3 text-black rounded-lg shadowbox transition-all duration-200 active:translate-y-0.5"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
 
     <!-- Overlay -->
     <div class="overlay hidden"></div>
     <!-- Wrapper of Nav Bar-->
-    <section class="mx-auto w-5/6 my-[10rem]">
+    <section class="mx-auto w-4/6 my-[10rem]">
       <div
         class="flex flex-col items-center space-y-5 mb-[10rem] opacity-text opacity-0 transition-all duration-500"
       >
@@ -135,11 +151,174 @@
         <h5 class="text-xl text-white">The areas that we're specialized in.</h5>
       </div>
       <!-- GRID -->
-      <ul class="grid grid-cols-2 gap-4 h-[150vh]">
-        <li class="bg-[url('../img/img1.png')] bg-cover h-full"></li>
-        <li class="bg-[url('../img/img2.png')] bg-cover h-full"></li>
-        <li class="bg-[url('../img/img3.png')] bg-cover h-full"></li>
-        <li class="bg-[url('../img/img4.png')] bg-cover h-full"></li>
+      <ul class="post-list grid grid-cols-2 h-full gap-4">
+        <li class="group">
+          <figure>
+            <div class="top flex justify-between z-10">
+              <div
+                class="text-white bg-black items-start backdrop-blur-sm px-7 py-2 h-10 rounded-lg transition-all duration-500 scale-0 group-hover:scale-100"
+              >
+                11.11.11
+              </div>
+              <div class="items-start space-x-3">
+                <button
+                  data-id="${item.id}"
+                  data-title="${item.title}"
+                  data-body="${item.body}"
+                  data-likes="${item.likes}"
+                  class="edit-button backdrop-blur-sm px-7 py-2 border-2 border-white rounded-lg text-white hover:bg-black active:bg-black transition-all duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+                >
+                  Edit
+                </button>
+                <button
+                  class="delete-button px-4 py-2 backdrop-blur-sm border-white border-2 text-white rounded-lg transition-all hover:bg-black active:bg-black duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            <img class="img" src="../img/img1.png" alt="" />
+            <figcaption class="flex flex-col justify-center space-y-5">
+              <div class="flex justify-between items-center">
+                <h2 class="text-white">Bubbles cksaxkasj</h2>
+                <div class="flex justify-between items-center div-likes">
+                  <button class="relative like-button">
+                    <p class="likes ml-8 text-white">1</p>
+                    <div
+                      class="h-6 w-6 absolute -top-0 -left-0 hover:scale-125 rounded-2xl transition-all active:translate-y-1 duration-300"
+                    >
+                      <img src="../img/like.svg" style="fill: white" alt="" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet kjasdhkjadsh kjasdjkadsh hdhd dhdh
+                hhh dhdh
+              </p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="group">
+          <figure>
+            <div class="top flex justify-end items-start space-x-3">
+              <button
+                data-id="${item.id}"
+                data-title="${item.title}"
+                data-body="${item.body}"
+                data-likes="${item.likes}"
+                class="edit-button backdrop-blur-sm px-7 py-2 border-2 border-white rounded-lg text-white hover:bg-black active:bg-black transition-all duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Edit
+              </button>
+              <button
+                class="delete-button px-4 py-2 backdrop-blur-sm border-white border-2 text-white rounded-lg transition-all hover:bg-black active:bg-black duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Delete
+              </button>
+            </div>
+            <img class="img" src="../img/img2.png" alt="" />
+            <figcaption class="flex flex-col justify-center space-y-5">
+              <div class="flex justify-between items-center">
+                <h2 class="text-white">Bubbles cksaxkasj</h2>
+                <div class="flex justify-between items-center div-likes">
+                  <button class="relative like-button">
+                    <p class="likes ml-8 text-white">1</p>
+                    <div
+                      class="h-6 w-6 absolute -top-0 -left-0 hover:scale-125 rounded-2xl transition-all active:translate-y-1 duration-300"
+                    >
+                      <img src="../img/like.svg" style="fill: white" alt="" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet kjasdhkjadsh kjasdjkadsh hdhd dhdh
+                hhh dhdh
+              </p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="group">
+          <figure>
+            <div class="top flex justify-end items-start space-x-3">
+              <button
+                data-id="${item.id}"
+                data-title="${item.title}"
+                data-body="${item.body}"
+                data-likes="${item.likes}"
+                class="edit-button backdrop-blur-sm px-7 py-2 border-2 border-white rounded-lg text-white hover:bg-black active:bg-black transition-all duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Edit
+              </button>
+              <button
+                class="delete-button px-4 py-2 backdrop-blur-sm border-white border-2 text-white rounded-lg transition-all hover:bg-black active:bg-black duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Delete
+              </button>
+            </div>
+            <img class="img" src="../img/img3.png" alt="" />
+            <figcaption class="flex flex-col justify-center space-y-5">
+              <div class="flex justify-between items-center">
+                <h2 class="text-white">Bubbles cksaxkasj</h2>
+                <div class="flex justify-between items-center div-likes">
+                  <button class="relative like-button">
+                    <p class="likes ml-8 text-white">1</p>
+                    <div
+                      class="h-6 w-6 absolute -top-0 -left-0 hover:scale-125 rounded-2xl transition-all active:translate-y-1 duration-300"
+                    >
+                      <img src="../img/like.svg" style="fill: white" alt="" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet kjasdhkjadsh kjasdjkadsh hdhd dhdh
+                hhh dhdh
+              </p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="group">
+          <figure>
+            <div class="top flex justify-end items-start space-x-3">
+              <button
+                data-id="${item.id}"
+                data-title="${item.title}"
+                data-body="${item.body}"
+                data-likes="${item.likes}"
+                class="edit-button backdrop-blur-sm px-7 py-2 border-2 border-white rounded-lg text-white hover:bg-black active:bg-black transition-all duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Edit
+              </button>
+              <button
+                class="delete-button px-4 py-2 backdrop-blur-sm border-white border-2 text-white rounded-lg transition-all hover:bg-black active:bg-black duration-500 active:translate-y-0.5 scale-0 group-hover:scale-100"
+              >
+                Delete
+              </button>
+            </div>
+            <img class="img" src="../img/img4.png" alt="" />
+            <figcaption class="flex flex-col justify-center space-y-5">
+              <div class="flex justify-between items-center">
+                <h2 class="text-white">Bubbles cksaxkasj</h2>
+                <div class="flex justify-between items-center div-likes">
+                  <button class="relative like-button">
+                    <p class="likes ml-8 text-white">1</p>
+                    <div
+                      class="h-6 w-6 absolute -top-0 -left-0 hover:scale-125 rounded-2xl transition-all active:translate-y-1 duration-300"
+                    >
+                      <img src="../img/like.svg" style="fill: white" alt="" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet kjasdhkjadsh kjasdjkadsh hdhd dhdh
+                hhh dhdh
+              </p>
+            </figcaption>
+          </figure>
+        </li>
       </ul>
     </section>
     <!-- Mountain Parallax -->
@@ -274,5 +453,6 @@
         <p class="text-white font-extralight text-sm">We're here for you!</p>
       </div>
     </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>
